@@ -19,3 +19,15 @@ export function toCanvasXY(
     y: cy - distanceM * scale * Math.sin(rad),
   }
 }
+
+export interface Coords3D { x: number; y: number; z: number }
+
+export function to3DCoords(panDeg: number, tiltDeg: number, distanceM: number): Coords3D {
+  const panRad  = (panDeg  * Math.PI) / 180
+  const tiltRad = (tiltDeg * Math.PI) / 180
+  return {
+    x: distanceM * Math.cos(tiltRad) * Math.cos(panRad),
+    y: distanceM * Math.cos(tiltRad) * Math.sin(panRad),
+    z: distanceM * Math.sin(tiltRad),
+  }
+}

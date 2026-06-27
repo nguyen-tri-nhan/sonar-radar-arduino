@@ -51,7 +51,8 @@ class RadarBroadcaster {
             mapOf(
                 "type"      to "READING",
                 "radarId"   to reading.radarId,
-                "angle"     to reading.angle,
+                "pan"       to reading.pan,
+                "tilt"      to reading.tilt,
                 "distance"  to reading.distance,
                 "timestamp" to reading.timestamp,
             )

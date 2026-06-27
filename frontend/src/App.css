@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background: #000d00;
@@ -19,37 +15,107 @@ body {
   min-height: 100vh;
 }
 
+/* ── Header ─────────────────────────────────── */
 .app-header {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .status {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   padding: 3px 10px;
   border-radius: 4px;
 }
+.status.online  { color: #00ff46; border: 1px solid #00ff4660; }
+.status.offline { color: #ff4444; border: 1px solid #ff444460; }
 
-.status.online {
+.mode-select {
+  background: #001500;
   color: #00ff46;
-  border: 1px solid #00ff4660;
+  border: 1px solid #00ff4640;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  cursor: pointer;
+  outline: none;
 }
+.mode-select:hover { border-color: #00ff4680; }
 
-.status.offline {
-  color: #ff4444;
-  border: 1px solid #ff444460;
-}
+/* ── Canvas area ────────────────────────────── */
+.canvas-area { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
 
-main {
+.canvas-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   border: 1px solid #00ff4630;
   border-radius: 4px;
   overflow: hidden;
+}
+
+.canvas-label {
+  font-size: 10px;
+  color: rgba(0,255,70,0.4);
+  text-align: center;
+  padding: 3px 0;
+  background: #001000;
+  letter-spacing: 0.08em;
+}
+
+/* ── 3D Immersive canvas ────────────────────── */
+.canvas-3d-wrap {
+  width: 100%;
+  max-width: 860px;
+  height: 520px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #00ff4630;
+}
+
+/* ── Object info panel ──────────────────────── */
+.object-panel {
+  width: 100%;
+  max-width: 860px;
+  border: 1px solid #00ff4630;
+  border-radius: 4px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #001000;
+}
+
+.object-panel.empty {
+  color: rgba(0,255,70,0.3);
+  font-size: 0.82rem;
+}
+
+.object-panel-row {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.object-panel .label {
+  font-size: 0.75rem;
+  color: rgba(0,255,70,0.45);
+  min-width: 28px;
+}
+
+.object-panel .value {
+  font-size: 0.9rem;
+  color: #00ff46;
+  min-width: 64px;
+  font-variant-numeric: tabular-nums;
 }

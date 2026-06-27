@@ -81,17 +81,18 @@ class SerialIngestService {
 
     private fun parseLine(line: String) {
         if (line.isEmpty() || !READING_RE.matches(line)) return
-        val comma    = line.indexOf(',')
-        val angle    = line.substring(0, comma).toInt()
-        val distance = line.substring(comma + 1).toInt()
+        val parts    = line.split(',')
+        val pan      = parts[0].toInt()
+        val tilt     = parts[1].toInt()
+        val distance = parts[2].toInt()
 
-        val reading = RadarReading(radarId, angle, distance, System.currentTimeMillis())
-        log.infof("[SERIAL] Read  → radarId=%s  angle=%d°  distance=%dcm", radarId, angle, distance)
+        val reading = RadarReading(radarId, pan, tilt, distance, System.currentTimeMillis())
+        log.infof("[SERIAL] Read  → radarId=%s  pan=%d°  tilt=%d°  distance=%dcm", radarId, pan, tilt, distance)
         broadcaster.broadcast(reading)
     }
 
     companion object {
         private val log = Logger.getLogger(SerialIngestService::class.java)
-        private val READING_RE = Regex("""^\d+,\d+$""")
+        private val READING_RE = Regex("""^\d+,\d+,\d+$""")
     }
 }
