@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000d00;
+  color: #00ff46;
+  font-family: monospace;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.status {
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.status.online {
+  color: #00ff46;
+  border: 1px solid #00ff4660;
+}
+
+.status.offline {
+  color: #ff4444;
+  border: 1px solid #ff444460;
+}
+
+main {
+  border: 1px solid #00ff4630;
+  border-radius: 4px;
+  overflow: hidden;
+}
